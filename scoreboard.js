@@ -5,9 +5,6 @@ let hTeamScore = "";
 let vTeamScore = "";
 let gameStatus = "";
 
-document.getElementById('league').value = "";
-document.getElementById('userTeam').value = "";
-
 const selForm = document.getElementById('teamForm'),
 selOrder = [ 'league', 'userTeam' ],
 treeData = 
