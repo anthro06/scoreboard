@@ -336,6 +336,8 @@ function buildWebPage(gameData) {
 
     if (gameStatus == 1) {
         console.log("Game not started yet!");
+        let clearBoxScore = document.getElementById('boxScore');
+        clearBoxScore.innerHTML = '';
         return;
     }
 
