@@ -149,6 +149,20 @@ function setSubSelects(selectName) {
 setSelect('league', 0)
 setSubSelects('league')
 
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function toggleNav() {
+    let x = document.getElementById('nav');
+    let f = document.getElementById('spanBreak');
+    let br = document.createElement('br');
+    if (x.className === "top-nav font-nav") {
+      x.className += " responsive";
+      f.appendChild(br);
+    } else {
+      x.className = "top-nav font-nav";
+      f.innerHTML = '';
+    }
+  }
+
 async function getData(selectedLeague = league, selectedTeam = userTeam, selectedDate = userDate) {
     console.log(`Fetching data for Date: ${selectedDate}, League: ${selectedLeague}, Team: ${selectedTeam}`);
     
@@ -292,7 +306,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('gameTitle').innerHTML = `No Game Found for ${league} and ${userTeam} for the requested date. <br> Please Select Again.`;
                 document.getElementById('gameProgress').textContent = "Game Progress";
                 document.getElementById('leagueInfo').innerHTML = "";
-                
+
                 document.getElementById(`vTeamName`).textContent = "";
                 document.getElementById(`vTeamScore`).textContent = "";
                 document.getElementById(`vTeamLogo`).textContent = "";

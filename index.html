@@ -16,22 +16,24 @@
             <div id="nav" class="top-nav font-nav">
                 <a class="active" href="#home">Home</a>
                 <a href="./about.html">About</a>
+                <a href="javascript:void(0);" class="icon" onclick="toggleNav()">
+                    <i class="fa fa-bars"></i>
+                </a>
 
                 <div class="form">
                     <form id="teamForm">
-                        <label for="league">League Selection: </label>
+                        <label for="league">League: </label>
                         <select class="league-select" id="league" name="league">League</select>
-                        <label for="userTeam">Team Selection: </label>
-                        <select class="team-select" id="userTeam" name="userTeam"></select>
-                        <label for="userDate">Date Selection (leave blank for today): </label>
+                        <label for="userTeam">Team: </label>
+                        <select class="team-select" id="userTeam" name="userTeam"></select><span id="spanBreak"></span>
+                        <label for="userDate">Date (leave blank for today): </label>
                         <input type="date" id="userDate" name="userDate">
                         <input type="submit" value="Submit">
                     </form>
                 </div>
-
             </div>
-            
         </div>
+
         <div id="leagueInfo" class="league-info">
 
         </div>
@@ -46,7 +48,7 @@
             <div id="vTeamRecord" class="team-record"></div>
         </div>
         
-        <div class="game-score font-small">
+        <div class="game-score">
                 <div id="vTeamScore" class="font-roboto visitor-team-score"></div>
                 <div class="score-sep font-roboto">-</div>
                 <div id="hTeamScore" class="font-roboto home-team-score"></div>

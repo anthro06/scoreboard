@@ -130,6 +130,7 @@ input[type=submit] {
 }
 
 .nav {
+    display: grid;
     grid-area: nav;
     place-self: center stretch;
 }
@@ -164,6 +165,10 @@ color: black;
 .top-nav a.active {
 background-color: #04AA6D;
 color: white;
+}
+
+.top-nav .icon {
+    display: none;
 }
 
 .button {
@@ -300,3 +305,147 @@ color: white;
     font-style: normal;
     font-size: 1rem;
 }
+
+@media (width <= 850px) {
+    img {
+        height: 50px;
+        padding-bottom: 0%;
+        justify-self: center;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h3 {
+        font-size: .75rem;
+    }
+
+    .footer {
+        font-size: .75rem;
+    }
+
+    .scoreboard-container {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
+        grid-template-areas:
+            "nav nav nav nav nav" 
+            ". . league . ."
+            "header header header header header"
+            "visitor visitor score home home"
+            "box-score box-score box-score box-score box-score"
+            "footer footer footer footer footer"
+            ;
+    }
+
+    .team-name {
+        font-size: .75rem;
+    }
+
+    .team-record {
+        font-size: .65rem;
+    }
+
+    .score-sep {
+        margin: 0 10px;
+    }
+
+    .col-headers {
+        font-size: 10px;
+    }
+
+    .box-name {
+        font-size: 10px;
+    }
+
+    .font-small {
+        font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
+        font-weight: normal;
+        font-size: 6px;
+    }
+
+    .font-roboto {
+        font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
+        font-weight: normal;
+        line-height: 24px;
+        font-size: 1rem;
+    }
+
+    .font-nav {
+        font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
+        font-weight: normal;
+        font-size: 10px;
+    }
+
+    .top-nav a {
+        padding: 10px 12px;
+        font-size: 10px;
+    }
+
+    .top-nav {
+        font-size: 10px;
+    }
+
+    .league-info-img {
+        height: 100px;
+        padding: 0;
+    }
+
+    input[type="date" i] {
+        font-size: 10px;
+    }
+
+    input[type=submit] {
+        font-size: 10px;
+    }
+
+    select {
+        font-size: 10px;
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    /* Hide all links, except for the first one ("Home"). Show the link that contains should open and close the topnav (.icon) */
+    .top-nav a:not(:first-child) {display: none;}
+    .top-nav form {display: none;}
+    .top-nav a.icon {
+        float: right;
+        display: block;
+  }
+
+}
+
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+@media screen and (max-width: 768px) {
+    .top-nav.responsive {position: relative;}
+    .top-nav.responsive a.icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .top-nav.responsive a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+
+    .top-nav.responsive form {
+        float: none;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .league-select {
+        width: 20%;
+        height: 1.5rem;
+    }
+    
+    .team-select {
+        width: 40%;
+        height: 1.5rem;
+    }
+  }
