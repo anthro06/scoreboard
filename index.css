@@ -118,8 +118,7 @@ input[type=submit] {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .5fr .5fr .5fr 1fr 1fr 1fr;
-    gap: 8px;
+    grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
     grid-template-areas:
         "nav nav nav nav nav" 
         ". . league . ."
@@ -182,7 +181,6 @@ color: white;
 
 .game-info {
     grid-area: header;
-    padding-bottom: 10px;
     text-align: center;
 }
 

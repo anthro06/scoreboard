@@ -291,6 +291,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Clear previous data, if any and display a message at the top of the window
                 document.getElementById('gameTitle').innerHTML = `No Game Found for ${league} and ${userTeam} for the requested date. <br> Please Select Again.`;
                 document.getElementById('gameProgress').textContent = "Game Progress";
+                document.getElementById('leagueInfo').innerHTML = "";
+                
                 document.getElementById(`vTeamName`).textContent = "";
                 document.getElementById(`vTeamScore`).textContent = "";
                 document.getElementById(`vTeamLogo`).textContent = "";
