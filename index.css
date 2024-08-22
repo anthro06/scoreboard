@@ -101,6 +101,13 @@ input[type=submit] {
     margin-left: 20%;
 }
 
+.logo-img {
+    height: 100px;
+    width: auto;
+    border-radius: 10%;
+    padding-bottom: 0;
+}
+
 .flex-left {
     width: 55%;
     margin-left: 5%;
@@ -341,6 +348,13 @@ color: white;
     .footer {
         font-size: .75rem;
     }
+
+    .logo-img {
+        height: 40px;
+        width: auto;
+        border-radius: 10%;
+        padding-bottom: 0;
+    }    
 
     .scoreboard-container {
         display: grid;
