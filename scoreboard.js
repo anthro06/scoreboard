@@ -149,21 +149,22 @@ function setSubSelects(selectName) {
 setSelect('league', 0)
 setSubSelects('league')
 
-/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+/* Toggle between adding and removing the "responsive" class to topnav and adding line breaks to the form when the user clicks on the icon */
 function toggleNav() {
     let x = document.getElementById('nav');
-    let f = document.getElementById('spanBreak');
-    let br = document.createElement('br');
+    let lineBreak = document.getElementsByClassName('spanBreak');
     if (x.className === "top-nav font-nav") {
-      x.className += " responsive";
-      f.appendChild(br);
+        x.className += " responsive";
+        for (let i = 0; i < lineBreak.length; i++) {
+            lineBreak[i].innerHTML = "<br>";
+        }
     } else {
-      x.className = "top-nav font-nav";
-      f.innerHTML = '';
+        x.className = "top-nav font-nav";
+        for (let i = 0; i < lineBreak.length; i++) {
+            lineBreak[i].innerHTML = "";
+        }
     }
   }
-
-//document.getElementById('teamForm')
 
 async function getData(selectedLeague = league, selectedTeam = userTeam, selectedDate = userDate) {
     console.log(`Fetching data for Date: ${selectedDate}, League: ${selectedLeague}, Team: ${selectedTeam}`);
@@ -342,11 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById(`hTeamRecord`).textContent = "";
             }
         });
-
-        // Clear the input fields after submission
-        //document.getElementById('league').value = "";
-        //document.getElementById('userTeam').value = "";
-        //document.getElementById('userDate').value = "";
     });
 
 });

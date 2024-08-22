@@ -21,13 +21,13 @@
                 </a>
 
                 <div class="form">
-                    <form id="teamForm" onsubmit="toggleNav()">
+                    <form id="teamForm">
                         <label for="league">League: </label>
-                        <select class="league-select" id="league" name="league">League</select>
+                        <select class="league-select" id="league" name="league">League</select><span id="spanBreak" class="spanBreak"></span>
                         <label for="userTeam">Team: </label>
-                        <select class="team-select" id="userTeam" name="userTeam"></select><span id="spanBreak"></span>
+                        <select class="team-select" id="userTeam" name="userTeam"></select><span id="spanBreak" class="spanBreak"></span>
                         <label for="userDate">Date (leave blank for today): </label>
-                        <input type="date" id="userDate" name="userDate">
+                        <input class="date-select" type="date" id="userDate" name="userDate"><span id="spanBreak" class="spanBreak"></span>
                         <input type="submit" value="Submit">
                     </form>
                 </div>
