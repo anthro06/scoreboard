@@ -389,16 +389,16 @@ color: white;
     .font-nav {
         font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
         font-weight: normal;
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .top-nav a {
         padding: 10px 12px;
-        font-size: 15px;
+        font-size: 25px;
     }
 
     .top-nav {
-        font-size: 15px;
+        font-size: 25px;
     }
 
     .league-info-img {
@@ -410,7 +410,7 @@ color: white;
         font-family: "Instrument Sans", sans-serif;
         font-weight: 400;
         font-style: normal;
-        font-size: medium;
+        font-size: large;
     }
 
     .about {
