@@ -321,6 +321,18 @@ color: white;
         font-size: .75rem;
     }
 
+    input[type="date" i] {
+        font-size: 10px;
+    }
+
+    input[type=submit] {
+        font-size: 10px;
+    }
+
+    select {
+        font-size: 10px;
+    }
+
     .footer {
         font-size: .75rem;
     }
@@ -394,18 +406,36 @@ color: white;
         padding: 0;
     }
 
-    input[type="date" i] {
-        font-size: 10px;
+    .font-instrument {
+        font-family: "Instrument Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        font-size: small;
     }
 
-    input[type=submit] {
-        font-size: 10px;
+    .about {
+        display: inline-block;
     }
 
-    select {
-        font-size: 10px;
+    .about-img {
+        margin-left: 12%;
     }
 
+    .flex-left {
+        width: 100%;
+        margin-left: 0%;
+        margin-top: 2%;
+    }
+    
+    .flex-right {
+        width: 100%;
+        margin-right: 0%;
+        padding: 5px;
+    }
+
+    .signature {
+        font-size: .6rem;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -419,7 +449,8 @@ color: white;
 
 }
 
-/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
+/* The "responsive" class is added to the topnav with JavaScript when the user clicks on the icon. 
+This class makes the topnav look good on small screens (display the links vertically instead of horizontally) */
 @media screen and (max-width: 768px) {
     .top-nav.responsive {position: relative;}
     .top-nav.responsive a.icon {
@@ -437,6 +468,7 @@ color: white;
         float: none;
         display: inline-block;
         text-align: left;
+        margin-top: 4%;
     }
 
     .league-select {

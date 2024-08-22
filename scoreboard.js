@@ -163,12 +163,28 @@ function toggleNav() {
     }
   }
 
+//document.getElementById('teamForm')
+
 async function getData(selectedLeague = league, selectedTeam = userTeam, selectedDate = userDate) {
     console.log(`Fetching data for Date: ${selectedDate}, League: ${selectedLeague}, Team: ${selectedTeam}`);
     
     if (!selectedLeague || !selectedTeam) {
-        console.error("League and team must be selected.")
-        return;
+        // Clear previous data, if any and display an error message at the top of the window
+        document.getElementById('gameTitle').innerHTML = `Please choose a league and team to display game information.`;
+        document.getElementById('gameProgress').textContent = "Game Progress";
+        document.getElementById('leagueInfo').innerHTML = "";
+
+        document.getElementById(`vTeamName`).textContent = "";
+        document.getElementById(`vTeamScore`).textContent = "";
+        document.getElementById(`vTeamLogo`).textContent = "";
+        document.getElementById(`vTeamRecord`).textContent = "";
+
+        document.getElementById(`hTeamName`).textContent = "";
+        document.getElementById(`hTeamScore`).textContent = "";
+        document.getElementById(`hTeamLogo`).textContent = "";
+        document.getElementById(`hTeamRecord`).textContent = "";
+        //console.error("League and team must be selected.")
+        //return;
     }
 
     league = selectedLeague;
@@ -206,7 +222,8 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
 
     const leaguePath = leaguePaths[league];
     if(!leaguePath) {
-        return res.status(400).json({ error: "Unsupported League" });
+        //return res.status(400).json({ error: "Unsupported League" });
+        console.error('League and team must be selected.')
     };
 
     const url = "https://site.api.espn.com/apis/site/v2/sports/" + leaguePath  + "/scoreboard?dates=" + formattedDate + "&limit=200";
@@ -266,6 +283,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let userTeam = document.getElementById('userTeam').value;
         let userDate = document.getElementById('userDate').value;
 
+        let x = document.getElementById('nav');
+        if (x.className === "top-nav font-nav") {
+            x.className += " responsive";
+        } else {
+            x.className = "top-nav font-nav";
+        }
+
         // If the user does not select a date from the form, default to today's Date.
         if (!userDate) {
             console.error("No date selected by the user, using default of today's date.");
@@ -320,9 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Clear the input fields after submission
-        document.getElementById('league').value = "";
-        document.getElementById('userTeam').value = "";
-        document.getElementById('userDate').value = "";
+        //document.getElementById('league').value = "";
+        //document.getElementById('userTeam').value = "";
+        //document.getElementById('userDate').value = "";
     });
 
 });
