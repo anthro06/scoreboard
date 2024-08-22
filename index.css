@@ -327,10 +327,15 @@ color: white;
 
     input[type=submit] {
         font-size: 15px;
+        margin-left: 4%;
     }
 
     select {
         font-size: 15px;
+    }
+
+    label {
+        margin-left: 4%;
     }
 
     .footer {
