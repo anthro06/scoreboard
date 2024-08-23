@@ -77,6 +77,22 @@ input[type=submit] {
     margin-top: 1%;
 }
 
+.scoreboard-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
+    grid-template-areas:
+        "nav nav nav nav nav" 
+        ". . league . ."
+        "header header header header header"
+        ". visitor score home ."
+        ". box-score box-score box-score ."
+        "footer footer footer footer footer"
+        ;
+}
+
 .about-container {
     display: grid;
     justify-items: center;
@@ -87,6 +103,39 @@ input[type=submit] {
     grid-template-areas:
         "nav nav nav nav nav"
         ;
+}
+
+.schedule-container {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: .2fr .5fr .5fr 3fr 1fr;
+    gap: 8px;
+    grid-template-areas:
+        "nav nav nav nav nav"
+        ". . league . ."
+        ". . league-title . ."
+        "schedule-table schedule-table schedule-table schedule-table schedule-table"
+        "footer footer footer footer footer"
+        ;
+}
+
+.league-title {
+    grid-area: league-title;
+}
+
+.schedule-table {
+    grid-area: schedule-table;
+    width: 75%;
+}
+
+.MLB-table {
+    font-weight: normal;
+}
+
+.sch-row {
+    text-align: center;
 }
 
 .about {
@@ -118,22 +167,6 @@ input[type=submit] {
     width: 45%;
     margin-right: 5%;
     padding: 5px;
-}
-
-.scoreboard-container {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
-    grid-template-areas:
-        "nav nav nav nav nav" 
-        ". . league . ."
-        "header header header header header"
-        ". visitor score home ."
-        ". box-score box-score box-score ."
-        "footer footer footer footer footer"
-        ;
 }
 
 .nav {
