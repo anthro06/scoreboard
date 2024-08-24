@@ -110,12 +110,12 @@ input[type=submit] {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .2fr .5fr .5fr 3fr 1fr;
+    grid-template-rows: .2fr .5fr .5fr 4fr 1fr;
     gap: 8px;
     grid-template-areas:
         "nav nav nav nav nav"
         ". . league . ."
-        ". . league-title . ."
+        ". league-title league-title league-title ."
         "schedule-table schedule-table schedule-table schedule-table schedule-table"
         "footer footer footer footer footer"
         ;
@@ -127,11 +127,8 @@ input[type=submit] {
 
 .schedule-table {
     grid-area: schedule-table;
+    align-self: start;
     width: 75%;
-}
-
-.MLB-table {
-    font-weight: normal;
 }
 
 .sch-row {
