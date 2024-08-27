@@ -172,8 +172,10 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
     if (!selectedLeague || !selectedTeam) {
         // Clear previous data, if any and display an error message at the top of the window
         document.getElementById('gameTitle').innerHTML = `Please choose a league and team to display game information.`;
-        document.getElementById('gameProgress').textContent = "Game Progress";
+        document.getElementById('gameProgress').textContent = "";
         document.getElementById('leagueInfo').innerHTML = "";
+        document.getElementById('boxScore').innerHTML = "";
+        document.getElementById('scoreSep').textContent = "";
 
         document.getElementById(`vTeamName`).textContent = "";
         document.getElementById(`vTeamScore`).textContent = "";
@@ -329,8 +331,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error('No game data found.');
                 // Clear previous data, if any and display a message at the top of the window
                 document.getElementById('gameTitle').innerHTML = `No Game Found for ${league} and ${userTeam} for the requested date. <br> Please Select Again.`;
-                document.getElementById('gameProgress').textContent = "Game Progress";
+                document.getElementById('gameProgress').textContent = "";
                 document.getElementById('leagueInfo').innerHTML = "";
+                document.getElementById('boxScore').innerHTML = "";
+                document.getElementById('scoreSep').textContent = "";
 
                 document.getElementById(`vTeamName`).textContent = "";
                 document.getElementById(`vTeamScore`).textContent = "";
@@ -358,8 +362,14 @@ function buildWebPage(gameData) {
 
     document.getElementById('gameTitle').textContent = `${gameName}`;
     document.getElementById('gameProgress').textContent = `${gameProgress}`;
-    document.getElementById('leagueInfo').innerHTML = `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
+    document.getElementById('scoreSep').textContent = "-";
+    
+    let info = document.getElementById('leagueInfo')
 
+    info.innerHTML =  `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
+
+    //document.getElementById('leagueInfo').innerHTML =
+    
     const setTeamData = (team, prefix) => {
         document.getElementById(`${prefix}TeamName`).textContent = team.name;
         document.getElementById(`${prefix}TeamScore`).textContent = team.score;

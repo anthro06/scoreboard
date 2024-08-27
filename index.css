@@ -85,7 +85,7 @@ input[type=submit] {
     grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
     grid-template-areas:
         "nav nav nav nav nav" 
-        ". . league . ."
+        ". league league league ."
         "header header header header header"
         ". visitor score home ."
         ". box-score box-score box-score ."
@@ -214,6 +214,10 @@ color: white;
 
 .league-info {
     grid-area: league;
+}
+
+.league {
+    display: inline-block;
 }
 
 .league-info-img {
