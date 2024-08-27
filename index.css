@@ -110,11 +110,10 @@ input[type=submit] {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .2fr .5fr .5fr 4fr 1fr;
+    grid-template-rows: .2fr .5fr 4fr 1fr;
     gap: 8px;
     grid-template-areas:
         "nav nav nav nav nav"
-        ". . league . ."
         ". league-title league-title league-title ."
         "schedule-table schedule-table schedule-table schedule-table schedule-table"
         "footer footer footer footer footer"
@@ -123,6 +122,13 @@ input[type=submit] {
 
 .league-title {
     grid-area: league-title;
+    text-align: center;
+}
+
+.title-display {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
 }
 
 .schedule-table {
@@ -388,7 +394,22 @@ color: white;
         width: auto;
         border-radius: 10%;
         padding-bottom: 0;
-    }    
+    }
+
+    .schedule-container {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: .2fr .5fr 4fr 1fr;
+        gap: 8px;
+        grid-template-areas:
+            "nav nav nav nav nav"
+            ". league-title league-title league-title ."
+            "schedule-table schedule-table schedule-table schedule-table schedule-table"
+            "footer footer footer footer footer"
+            ;
+    }
 
     .scoreboard-container {
         display: grid;
@@ -398,7 +419,7 @@ color: white;
         grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
         grid-template-areas:
             "nav nav nav nav nav" 
-            ". . league . ."
+            ". league league league ."
             "header header header header header"
             "visitor visitor score home home"
             "box-score box-score box-score box-score box-score"

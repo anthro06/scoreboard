@@ -330,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 console.error('No game data found.');
                 // Clear previous data, if any and display a message at the top of the window
-                document.getElementById('gameTitle').innerHTML = `No Game Found for ${league} and ${userTeam} for the requested date. <br> Please Select Again.`;
+                document.getElementById('gameTitle').innerHTML = `No Game Found for ${league} and ${userTeam} on the requested date. <br> Please Select Again.`;
                 document.getElementById('gameProgress').textContent = "";
                 document.getElementById('leagueInfo').innerHTML = "";
                 document.getElementById('boxScore').innerHTML = "";
