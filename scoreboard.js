@@ -225,7 +225,6 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
 
     const leaguePath = leaguePaths[league];
     if(!leaguePath) {
-        //return res.status(400).json({ error: "Unsupported League" });
         console.error('League and team must be selected.')
     };
 
@@ -266,15 +265,16 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
                 gameDate: new Date(gameDate).toDateString(),
                 gameName,
                 gameProgress: status.type.shortDetail,
+                gameTime: new Date(gameDate).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
                 gameStatus: status.type.id,
                 homeTeam: extractTeamData(homeTeam),
                 visitorTeam: extractTeamData(visitorTeam),
             });
-            console.log(json);
+            //console.log(json);
             return json;
 
         } else {
-            console.log('Error fetching data');
+            console.error('Error fetching data');
         }
 };
 
@@ -358,7 +358,7 @@ function buildWebPage(gameData) {
         return;
     };
 
-    const { league, gameName, gameProgress, gameStatus, homeTeam, visitorTeam } = gameData;
+    const { league, gameName, gameProgress, gameTime, gameStatus, homeTeam, visitorTeam } = gameData;
 
     document.getElementById('gameTitle').textContent = `${gameName}`;
     document.getElementById('gameProgress').textContent = `${gameProgress}`;
@@ -367,8 +367,6 @@ function buildWebPage(gameData) {
     let info = document.getElementById('leagueInfo')
 
     info.innerHTML =  `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
-
-    //document.getElementById('leagueInfo').innerHTML =
     
     const setTeamData = (team, prefix) => {
         document.getElementById(`${prefix}TeamName`).textContent = team.name;
@@ -384,6 +382,7 @@ function buildWebPage(gameData) {
         console.log("Game not started yet!");
         let clearBoxScore = document.getElementById('boxScore');
         clearBoxScore.innerHTML = '';
+        document.getElementById('gameProgress').textContent = `${gameTime}`;
         return;
     }
 

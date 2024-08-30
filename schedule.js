@@ -98,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Fetch and display data for the selected game
         getData(league, userDate).then(gameData => {
             if (gameData) {
-                //document.getElementById('leagueInfo').innerHTML = `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
                 
                 buildWebPage(gameData);
             } else {
@@ -137,7 +136,7 @@ function buildWebPage(gameData) {
     leagueTitle.setAttribute('class', 'league-title title-display');
     leagueTitle.innerHTML = `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo"><h2>${league} schedule for ${formatDate}</h2>`
 
-    const headers = ['Visiting Team', 'Home Team', 'Game Time', 'Where to Watch (National)', 'Where to Watch (Local)', 'Where to Stream'];
+    const headers = ['Visiting Team', 'Home Team', 'Game Time', 'Where to Watch', 'Where to Stream'];
     buildTable(headers, gameData);
 
     function buildTable(headers, gameData) {
@@ -174,14 +173,10 @@ function buildWebPage(gameData) {
             let visitorTeamName = gameData[i].competitors[1].name;
             
             let gameDate = gameData[i].gameDate;
-            gameDate = new Date(gameDate).toLocaleTimeString();
+            gameDate = new Date(gameDate).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'});
 
             let natlBcst = gameData[i].geoBroadcasts
-                .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '1')
-                .map(broadcast => broadcast.media.shortName);
-
-            let localBcst = gameData[i].geoBroadcasts
-                .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '2' || broadcast.market.id === '3')
+                .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '1' || broadcast.market.id === '2' || broadcast.market.id === '3')
                 .map(broadcast => broadcast.media.shortName);
 
             let stream = gameData[i].geoBroadcasts
@@ -195,9 +190,6 @@ function buildWebPage(gameData) {
                 const vTeam = row.insertCell();
                 vTeam.innerHTML = `<img src="${visitorTeamLogo}" alt="${visitorTeamName} logo"><br>${visitorTeamName}`;
 
-                //const nameCell = row.insertCell();
-                //nameCell.textContent = 'vs';
-                
                 const hTeam = row.insertCell();
                 hTeam.innerHTML = `<img src="${homeTeamLogo}" alt="${homeTeamName} logo"><br>${homeTeamName}`;
                 
@@ -212,62 +204,21 @@ function buildWebPage(gameData) {
                     natlBcstCell.innerHTML = 'No National Broadcast Available'
                 };
 
-                const lclBcstCell = row.insertCell();
-                if (localBcst.length > 0) {
-                    console.log('Local Bcst:', localBcst);
-                    lclBcstCell.innerHTML = localBcst.join(', ');
-                } else {
-                    lclBcstCell.innerHTML = 'No Local Broadcast Available'
-                };
-
                 const streamCell = row.insertCell();
                 if (stream.length > 0) {
                     console.log('Stream:', stream);
-                    //streamCell.textContent = stream;
                     streamCell.innerHTML = stream.join(', ');
                 } else {
                     streamCell.innerHTML = 'No Streaming Available'
                 };
                 
-                //streamCell.textContent = stream;
             };
 
             createRow(gameName, gameDate);
 
         };    
 
-        //const createRow = (team, prefix) =>{
-          //  const row = tbody.insertRow();
-            //const th = document.createElement('th');
-            //th.textContent = team.name;
-            //th.setAttribute('class', `${prefix}-team box-name overflow`);
-            //row.setAttribute('id', `${prefix}TeamRow`);
-            //row.appendChild(th);
-
-            //const statCells = league === 'MLB' ? [1, 0, 7] : [];
-            //statCells.forEach(statIndex => {
-                //const cell = row.insertCell();
-                //cell.textContent = team.stats[statIndex]?.displayValue || '0';
-                //cell.setAttribute('class', 'box');
-            //});
-
             scheduleDiv.appendChild(table);
 
     };
 };
-
-    
-    //document.getElementById('gameTitle').textContent = `${gameName}`;
-    //document.getElementById('gameProgress').textContent = `${gameProgress}`;
-    
-    //const setTeamData = (team, prefix) => {
-        //document.getElementById(`${prefix}TeamName`).textContent = team.name;
-        //document.getElementById(`${prefix}TeamLogo`).innerHTML = `<img src="${team.logo}" alt="${team.name} logo">`;
-        //document.getElementById(`${prefix}TeamRecord`).textContent = `(${team.record})`;
-    //};
-
-    //setTeamData(homeTeam, 'h');
-    //setTeamData(visitorTeam, 'v');
-
-    
-    

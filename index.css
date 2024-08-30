@@ -19,7 +19,7 @@ caption {
 
 img {
     height: 100px;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     justify-self: center;
 }
 
@@ -46,6 +46,12 @@ footer {
     font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
     font-weight: normal;
     font-size: 12px;
+}
+
+.font-menu-small {
+    font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
+    font-weight: normal;
+    font-size: 14px;
 }
 
 .font-nav {
@@ -115,7 +121,7 @@ input[type=submit] {
     grid-template-areas:
         "nav nav nav nav nav"
         ". league-title league-title league-title ."
-        "schedule-table schedule-table schedule-table schedule-table schedule-table"
+        ". schedule-table schedule-table schedule-table ."
         "footer footer footer footer footer"
         ;
 }
@@ -355,7 +361,7 @@ color: white;
 
 @media (width <= 850px) {
     img {
-        height: 50px;
+        height: 40px;
         padding-bottom: 0%;
         justify-self: center;
     }
@@ -405,7 +411,7 @@ color: white;
         gap: 8px;
         grid-template-areas:
             "nav nav nav nav nav"
-            ". league-title league-title league-title ."
+            "league-title league-title league-title league-title league-title"
             "schedule-table schedule-table schedule-table schedule-table schedule-table"
             "footer footer footer footer footer"
             ;
@@ -426,6 +432,12 @@ color: white;
             "footer footer footer footer footer"
             ;
     }
+
+    .schedule-table {
+        grid-area: schedule-table;
+        justify-self: start;
+        width: 100%;
+    }    
 
     .team-name {
         font-size: .75rem;
@@ -451,6 +463,12 @@ color: white;
         font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
         font-weight: normal;
         font-size: 6px;
+    }
+
+    .font-menu-small {
+        font-family: "Roboto-Light", Arial, "sans-serif-light", sans-serif;
+        font-weight: normal;
+        font-size: 15px;
     }
 
     .font-roboto {
