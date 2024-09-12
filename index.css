@@ -1,26 +1,33 @@
 body {
     background-color: #3c4043;
     color:antiquewhite;
+    margin: 0;
 }
 
-div {
+/* div {
     display: grid;
 }
+ */
 
 table, th, td {
     border: 1px solid;
     border-collapse: collapse;
 }
 
-caption {
-    padding-bottom: 1%;
-    font-size: 1rem;
-}
-
 img {
     height: 100px;
     padding-bottom: 2%;
     justify-self: center;
+}
+
+form {
+    width: 75%;
+    display: inline-block;
+}
+
+caption {
+    padding-bottom: 1%;
+    font-size: 1rem;
 }
 
 footer {
@@ -72,6 +79,7 @@ footer {
 .team-select {
     width: 12%;
     height: 1.5rem;
+    
 }
 
 input[type=text] {
@@ -87,27 +95,15 @@ input[type=submit] {
     display: grid;
     justify-items: center;
     align-items: center;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
+    /* grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
+    grid-template-rows: .5fr .5fr .5fr 1fr .5fr;
     grid-template-areas:
-        "nav nav nav nav nav" 
-        ". league league league ."
-        "header header header header header"
-        ". visitor score home ."
-        ". box-score box-score box-score ."
-        "footer footer footer footer footer"
-        ;
-}
-
-.about-container {
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .2fr;
-    gap: 8px;
-    grid-template-areas:
-        "nav nav nav nav nav"
+        "left-img league league league right-img"
+        "left-img header header header right-img"
+        "left-img visitor score home right-img"
+        "left-img box-score box-score box-score right-img"
+        "left-img bcst bcst bcst right-img"
         ;
 }
 
@@ -126,6 +122,26 @@ input[type=submit] {
         ;
 }
 
+.banner {    
+    top: 20%;
+    z-index: -1;
+}
+
+.banner-img {
+    height: 300px;
+    object-fit: cover;
+}
+
+.left-side-bar {
+    grid-area: left-img;
+    left: 1%;
+}
+
+.right-side-bar {
+    grid-area: right-img;
+    right: 1%;
+}
+
 .league-title {
     grid-area: league-title;
     text-align: center;
@@ -135,6 +151,14 @@ input[type=submit] {
     display: flex;
     align-items: center;
     flex-direction: row;
+}
+
+.bcst-info {
+    grid-area: bcst;
+}
+
+.bcst-info-font {
+    font-size: 1.3rem;
 }
 
 .schedule-table {
@@ -179,17 +203,16 @@ input[type=submit] {
 }
 
 .nav {
-    display: grid;
-    grid-area: nav;
-    place-self: center stretch;
+    margin-bottom: 1%;
 }
 
 .top-nav {
+    width: 100%;
     display: inline-block;
     text-align: right;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-bottom: 1%;
+    /* margin-left: 2%; */
+    /* margin-right: 2%; */
+    /* margin-bottom: 1%; */
     background-color: #333;
     overflow: hidden;
   }
@@ -359,7 +382,13 @@ color: white;
     font-size: 1rem;
 }
 
-@media (width <= 850px) {
+@media (width <= 1330px) {
+    form {
+        width: fit-content;
+    }
+}
+
+@media (width <= 900px) {
     img {
         height: 40px;
         padding-bottom: 0%;
@@ -407,10 +436,10 @@ color: white;
         justify-items: center;
         align-items: center;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: .2fr .5fr 4fr 1fr;
+        grid-template-rows: .5fr 4fr 1fr;
         gap: 8px;
         grid-template-areas:
-            "nav nav nav nav nav"
+            
             "league-title league-title league-title league-title league-title"
             "schedule-table schedule-table schedule-table schedule-table schedule-table"
             "footer footer footer footer footer"
@@ -422,9 +451,8 @@ color: white;
         justify-items: center;
         align-items: center;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: .25fr .5fr .5fr .5fr 1fr 1fr;
+        grid-template-rows: .5fr .5fr .5fr 1fr 1fr;
         grid-template-areas:
-            "nav nav nav nav nav" 
             ". league league league ."
             "header header header header header"
             "visitor visitor score home home"
