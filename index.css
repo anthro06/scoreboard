@@ -95,8 +95,7 @@ input[type=submit] {
     display: grid;
     justify-items: center;
     align-items: center;
-    /* grid-template-columns: repeat(5, 1fr); */
-    grid-template-columns: .25fr 1fr 1fr 1fr .25fr;
+    grid-template-columns: repeat(5, 1fr);
     grid-template-rows: .5fr .5fr .5fr 1fr .5fr;
     grid-template-areas:
         "left-img league league league right-img"
