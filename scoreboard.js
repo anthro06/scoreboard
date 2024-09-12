@@ -376,7 +376,7 @@ function buildWebPage(gameData) {
     };
 
     let tvBcst = geoBroadcasts
-        .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '1' || broadcast.market.id === '2' || broadcast.market.id === '3')
+        .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '1' || broadcast.type.id === '1' && broadcast.market.id === '2' || broadcast.type.id === '1' && broadcast.market.id === '3')
         .map(broadcast => broadcast.media.shortName);
 
         let tvBcstDiv = document.getElementById('tvBcstInfo');
@@ -389,7 +389,7 @@ function buildWebPage(gameData) {
         };
 
     let stream = geoBroadcasts
-        .filter(broadcast => broadcast.type.id === '4')
+        .filter(broadcast => broadcast.type.id === '4' || broadcast.type.id === '6')
         .map(broadcast => broadcast.media.shortName);
 
         let streamDiv = document.getElementById('streamInfo');
