@@ -246,7 +246,7 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
             
             // Extract relevant information for the requested game
             const { name: gameName, date: gameDate, competitions } = selectedGame;
-            const { status, competitors } = competitions[0];
+            const { status, competitors, geoBroadcasts } = competitions[0];
             const [homeTeam, visitorTeam] = competitors;
             let json = {};
 
@@ -267,10 +267,11 @@ async function getData(selectedLeague = league, selectedTeam = userTeam, selecte
                 gameProgress: status.type.shortDetail,
                 gameTime: new Date(gameDate).toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}),
                 gameStatus: status.type.id,
+                geoBroadcasts: geoBroadcasts,
                 homeTeam: extractTeamData(homeTeam),
                 visitorTeam: extractTeamData(visitorTeam),
             });
-            //console.log(json);
+            console.log(json);
             return json;
 
         } else {
@@ -358,14 +359,13 @@ function buildWebPage(gameData) {
         return;
     };
 
-    const { league, gameName, gameProgress, gameTime, gameStatus, homeTeam, visitorTeam } = gameData;
+    const { league, gameName, gameProgress, gameTime, gameStatus, geoBroadcasts, homeTeam, visitorTeam } = gameData;
 
     document.getElementById('gameTitle').textContent = `${gameName}`;
     document.getElementById('gameProgress').textContent = `${gameProgress}`;
     document.getElementById('scoreSep').textContent = "-";
     
     let info = document.getElementById('leagueInfo')
-
     info.innerHTML =  `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
     
     const setTeamData = (team, prefix) => {
@@ -375,14 +375,45 @@ function buildWebPage(gameData) {
         document.getElementById(`${prefix}TeamRecord`).textContent = `(${team.record})`;
     };
 
+    let tvBcst = geoBroadcasts
+        .filter(broadcast => broadcast.type.id === '1' && broadcast.market.id === '1' || broadcast.market.id === '2' || broadcast.market.id === '3')
+        .map(broadcast => broadcast.media.shortName);
+
+        let tvBcstDiv = document.getElementById('tvBcstInfo');
+        
+        if (tvBcst.length > 0) {
+            console.log('TV Bcst:', tvBcst);
+            tvBcstDiv.innerHTML = `<span class='bcst-info-font tv'>Where To Watch: ${tvBcst.join(', ')}</span>`
+        } else {
+            tvBcstDiv.innerHTML = `<span class='bcst-info-font tv'>Where To Watch: No TV Broadcast Available</span>`
+        };
+
+    let stream = geoBroadcasts
+        .filter(broadcast => broadcast.type.id === '4')
+        .map(broadcast => broadcast.media.shortName);
+
+        let streamDiv = document.getElementById('streamInfo');
+
+        if (stream.length > 0) {
+            console.log('Stream:', stream);
+            streamDiv.innerHTML = `<br><span class='bcst-info-font stream'>Where To Stream: ${stream.join(', ')}</span>`
+
+        } else {
+            streamDiv.innerHTML = `<br><span class='bcst-info-font stream'>Where To Stream: No Streaming Available</span>`
+        };
+
+
     setTeamData(homeTeam, 'h');
     setTeamData(visitorTeam, 'v');
 
     if (gameStatus == 1) {
         console.log("Game not started yet!");
+
         let clearBoxScore = document.getElementById('boxScore');
         clearBoxScore.innerHTML = '';
+
         document.getElementById('gameProgress').textContent = `${gameTime}`;
+
         return;
     }
 
@@ -472,6 +503,9 @@ function buildWebPage(gameData) {
         thName.classList.add('wide');
         
         if (gameStatus == 3) {
+            tvBcstDiv.innerHTML = "";
+            streamDiv.innerHTML = "";
+
             if (hTeamScore > vTeamScore) {
                 let winningTeam = document.getElementById('hTeamRow');
                 winningTeam.setAttribute('class', 'winning');
