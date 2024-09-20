@@ -4,10 +4,25 @@ body {
     margin: 0;
 }
 
-/* div {
-    display: grid;
+.NFL {
+    background-image: url("media/football-background-2.jpg");
+    background-size: 100%;
 }
- */
+
+.MLB {
+    background-image: url("media/baseball-background.jpg");
+    background-size: 100%;
+}
+
+.WNBA {
+    background-image: url("media/basketball-background.jpg");
+    background-size: 100%;
+}
+
+.NBA {
+    background-image: url("media/basketball-background.jpg");
+    background-size: 100%;
+}
 
 table, th, td {
     border: 1px solid;
@@ -69,6 +84,11 @@ footer {
 
 .form {
     margin-right: 1.5%;
+}
+
+.team-logo {
+    display: flex;
+    justify-content: center;
 }
 
 .league-select {
@@ -209,9 +229,6 @@ input[type=submit] {
     width: 100%;
     display: inline-block;
     text-align: right;
-    /* margin-left: 2%; */
-    /* margin-right: 2%; */
-    /* margin-bottom: 1%; */
     background-color: #333;
     overflow: hidden;
   }
@@ -365,7 +382,9 @@ color: white;
 }
 
 .footer {
-    grid-area: footer;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: center;
 }
 
 .overflow {

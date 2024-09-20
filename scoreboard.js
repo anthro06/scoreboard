@@ -367,6 +367,8 @@ function buildWebPage(gameData) {
     
     let info = document.getElementById('leagueInfo')
     info.innerHTML =  `<img src="https://a.espncdn.com/i/teamlogos/leagues/500/${league}.png" class="league-info-img" alt="${league} logo">`;
+
+    document.getElementById('bgBody').setAttribute('class', `${league}`);
     
     const setTeamData = (team, prefix) => {
         document.getElementById(`${prefix}TeamName`).textContent = team.name;
@@ -401,7 +403,6 @@ function buildWebPage(gameData) {
         } else {
             streamDiv.innerHTML = `<br><span class='bcst-info-font stream'>Where To Stream: No Streaming Available</span>`
         };
-
 
     setTeamData(homeTeam, 'h');
     setTeamData(visitorTeam, 'v');
