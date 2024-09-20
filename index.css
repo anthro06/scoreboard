@@ -5,23 +5,27 @@ body {
 }
 
 .NFL {
-    background-image: url("media/football-background-2.jpg");
+    background-image: url("media/football-background.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .MLB {
     background-image: url("media/baseball-background.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .WNBA {
     background-image: url("media/basketball-background.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .NBA {
     background-image: url("media/basketball-background.jpg");
     background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 table, th, td {
@@ -116,14 +120,7 @@ input[type=submit] {
     justify-items: center;
     align-items: center;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: .5fr .5fr .5fr 1fr .5fr;
-    grid-template-areas:
-        "left-img league league league right-img"
-        "left-img header header header right-img"
-        "left-img visitor score home right-img"
-        "left-img box-score box-score box-score right-img"
-        "left-img bcst bcst bcst right-img"
-        ;
+    grid-template-rows: .5fr 1fr;
 }
 
 .schedule-container {
@@ -133,12 +130,6 @@ input[type=submit] {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: .2fr .5fr 4fr 1fr;
     gap: 8px;
-    grid-template-areas:
-        "nav nav nav nav nav"
-        ". league-title league-title league-title ."
-        ". schedule-table schedule-table schedule-table ."
-        "footer footer footer footer footer"
-        ;
 }
 
 .banner {    
@@ -152,17 +143,17 @@ input[type=submit] {
 }
 
 .left-side-bar {
-    grid-area: left-img;
+    grid-area: 1/1/3/2;
     left: 1%;
 }
 
 .right-side-bar {
-    grid-area: right-img;
+    grid-area: 1/5/3/6;
     right: 1%;
 }
 
 .league-title {
-    grid-area: league-title;
+    grid-area: 1/2/2/5;
     text-align: center;
 }
 
@@ -173,7 +164,8 @@ input[type=submit] {
 }
 
 .bcst-info {
-    grid-area: bcst;
+    margin-top: 5%;
+    align-self: center;
 }
 
 .bcst-info-font {
@@ -181,7 +173,7 @@ input[type=submit] {
 }
 
 .schedule-table {
-    grid-area: schedule-table;
+    grid-area: 1/2/3/5;
     align-self: start;
     width: 75%;
 }
@@ -227,6 +219,7 @@ input[type=submit] {
 
 .top-nav {
     width: 100%;
+    height: 3rem;
     display: inline-block;
     text-align: right;
     background-color: #333;
@@ -264,7 +257,7 @@ color: white;
 }
 
 .league-info {
-    grid-area: league;
+    grid-area: 1/2/2/5;
 }
 
 .league {
@@ -276,17 +269,34 @@ color: white;
     padding: 0;
 }
 
+.blur-container {
+    grid-area: 2/2/3/5;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    background: rgba(255, 255, 255, 0.09);
+    border-radius: 16px;
+    backdrop-filter: blur(15px) saturate(50%);
+    justify-self: normal;
+    justify-content: center;
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
 .game-info {
-    grid-area: header;
     text-align: center;
 }
 
 .visitor-team {
-    grid-area: visitor;
+    padding-right: 5%;
 }
 
 .game-score {
-    grid-area: score;
+    /* grid-area: score; */
     display: inline-block;
     text-align: center;
 }
@@ -310,7 +320,7 @@ color: white;
 }
 
 .home-team {
-    grid-area: home;
+    padding-left: 5%;
 }
 
 .box {
@@ -325,7 +335,7 @@ color: white;
 }
 
 .box-score {
-    grid-area: box-score;
+    grid-area: 2/2/3/5;
     justify-self: left;
 }
 
@@ -438,6 +448,22 @@ color: white;
         margin-left: 4%;
     }
 
+    .NFL {
+        background-image: url("media/football-background-mobile.jpg");
+    }
+
+    .MLB {
+        background-image: url("media/baseball-background-mobile.jpg");
+    }
+    
+    .WNBA {
+        background-image: url("media/basketball-background.jpg");
+    }
+    
+    .NBA {
+        background-image: url("media/basketball-background.jpg");
+    }
+
     .footer {
         font-size: .75rem;
     }
@@ -449,6 +475,11 @@ color: white;
         padding-bottom: 0;
     }
 
+    .blur-container {
+        grid-area: 2/1/4/6;
+        margin: 0 2%;
+    }    
+
     .schedule-container {
         display: grid;
         justify-items: center;
@@ -456,12 +487,6 @@ color: white;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: .5fr 4fr 1fr;
         gap: 8px;
-        grid-template-areas:
-            
-            "league-title league-title league-title league-title league-title"
-            "schedule-table schedule-table schedule-table schedule-table schedule-table"
-            "footer footer footer footer footer"
-            ;
     }
 
     .scoreboard-container {
@@ -469,18 +494,11 @@ color: white;
         justify-items: center;
         align-items: center;
         grid-template-columns: repeat(5, 1fr);
-        grid-template-rows: .5fr .5fr .5fr 1fr 1fr;
-        grid-template-areas:
-            ". league league league ."
-            "header header header header header"
-            "visitor visitor score home home"
-            "box-score box-score box-score box-score box-score"
-            "footer footer footer footer footer"
-            ;
-    }
+        grid-template-rows: .5fr 1fr;
+        }
 
     .schedule-table {
-        grid-area: schedule-table;
+        grid-area: 1/2/3/5;
         justify-self: start;
         width: 100%;
     }    
@@ -537,6 +555,7 @@ color: white;
 
     .top-nav {
         font-size: 25px;
+        height: auto;
     }
 
     .league-info-img {
